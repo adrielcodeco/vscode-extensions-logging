@@ -87,6 +87,13 @@ jobs:
       - run: npm whoami
       - run: yarn publish --non-interactive
 
+  pack:
+    <<: *defaults
+    steps:
+      - attach_workspace: *attach_workspace
+      - run: yarn yarn:pack
+      - persist_to_workspace: *persist_to_workspace
+
   publish-github-release:
     docker:
       - image: cibuilds/github:0.10

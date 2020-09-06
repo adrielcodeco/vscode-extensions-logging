@@ -15,7 +15,8 @@
     "release": "",
     "test": "echo \"No test specified\" && exit 0",
     "typecheck": "ttsc -p ./",
-    "validations": "yarn lint && yarn lint:markdown && yarn check:spelling && yarn typecheck && yarn test"
+    "validations": "yarn lint && yarn lint:markdown && yarn check:spelling && yarn typecheck && yarn test",
+    "yarn:pack": "yarn pack && cpy '*.tgz' 'releases'"
   },
   "repository": {
     "type": "git",
