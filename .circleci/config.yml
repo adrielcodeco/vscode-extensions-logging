@@ -76,7 +76,7 @@ jobs:
       - attach_workspace: *attach_workspace
       - run: npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
       - run: npm whoami
-      - run: yarn version --prerelease --preid canary --no-commit-hooks
+      - run: yarn version --prerelease --preid canary --no-commit-hooks --no-git-tag-version
       - run: yarn publish --non-interactive
 
   publish-release:
