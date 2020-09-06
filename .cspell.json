@@ -1,0 +1,27 @@
+{
+  "version": "0.1",
+  "language": "en",
+  "ignorePaths": [
+    ".cspell.json",
+    "**/node_modules/**",
+    "*.d.ts",
+    "**/#/**",
+    "**/coverage/**",
+    "**/tests/**"
+  ],
+  "dictionaries": [
+    "typescript",
+    "softwareTerms",
+    "node",
+    "en_US",
+    "npm",
+    "misc",
+    "filetypes",
+    "bash"
+  ],
+  "words": [
+    "loglevel",
+    "printf",
+    "emerg"
+  ]
+}
