@@ -183,6 +183,7 @@ workflows:
             - publish-release
           filters: *tagFilter
       - publish-github-release:
+          context: github
           requires:
             - pack
           filters: *tagFilter
