@@ -17,6 +17,7 @@ jobs:
       with:
         node-version: '12.x'
         check-latest: trues
+        always-auth: true
 
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
@@ -48,8 +49,6 @@ jobs:
         npm i semver --no-save --no-package-lock --ignore-scripts --no-audit
         VERSION=$(node_modules/.bin/semver -i prerelease --preid canary $(node -e "console.log(require('semver').gt('$CANARY_VERSION' || '0.0.0', '$LATEST_VERSION' || '0.0.0') ? '$CANARY_VERSION' : '$LATEST_VERSION')"))
         echo "VERSION: ${VERSION}"
-        cat ~/.npmrc
-        cat ~/.yarnrc
         yarn publish --new-version $VERSION -tag canary --no-git-tag-version --no-commit-hooks
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
