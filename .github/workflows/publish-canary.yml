@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish-canary:
-    name: publish-canary
+    name: publish
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -39,7 +39,7 @@ jobs:
 
     - run: yarn global add semver
     - run: |
-        PKG_NAME=$(node -p "require('./package.json').version")
+        PKG_NAME=$(node -p "require('./package.json').name")
         echo "PKG_NAME: ${PKG_NAME}"
         CANARY_VERSION=$(yarn info $PKG_NAME dist-tags.canary | sed -n 2p)
         LATEST_VERSION=$(yarn info $PKG_NAME dist-tags.latest | sed -n 2p)

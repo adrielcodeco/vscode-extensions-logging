@@ -1,10 +1,10 @@
-name: validations
+name: pr
 on:
   pull_request:
     types: [opened, reopened, edited]
 
 jobs:
-  validations:
+  pr:
     name: validations
     runs-on: ubuntu-latest
     steps:
