@@ -1,11 +1,6 @@
 name: release
 on:
-  workflow_dispatch:
-    inputs:
-      semver:
-        description: 'semver'
-        required: true
-        default: 'patch'
+  workflow_dispatch
 
 jobs:
   release:
