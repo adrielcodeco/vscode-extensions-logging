@@ -1,8 +1,8 @@
 {
   "name": "vscode-extensions-logging",
-  "version": "1.0.0",
+  "version": "1.0.1-development",
   "description": "",
-  "main": "index.js",
+  "main": "#/index.js",
   "scripts": {
     "build": "ttsc -p ./tsconfig.build.json",
     "check:spelling": "cspell --config=.cspell.json \"**/*.{md,ts,js}\"",
@@ -16,11 +16,12 @@
     "test": "echo \"No test specified\" && exit 0",
     "typecheck": "ttsc -p ./",
     "validations": "yarn lint && yarn lint:markdown && yarn check:spelling && yarn typecheck && yarn test",
-    "yarn:pack": "yarn pack && cpy '*.tgz' 'releases'"
+    "yarn:pack": "yarn pack && cpy '*.tgz' 'releases'",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adrielcodeco/vscode-extensions-logging.git"
+    "url": "https://github.com/adrielcodeco/vscode-extensions-logging.git"
   },
   "keywords": [],
   "author": "",
@@ -37,12 +38,15 @@
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@types/lodash": "^4.14.161",
     "@types/node": "^14.6.4",
     "@types/vscode": "^1.48.0",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "@zerollup/ts-transform-paths": "^1.7.18",
+    "conventional-changelog-cli": "^2.1.0",
     "cspell": "^4.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.8.1",
@@ -54,6 +58,8 @@
     "husky": "^4.2.5",
     "markdownlint-cli": "^0.23.2",
     "prettier": "^2.1.1",
+    "semantic-release": "^17.1.1",
+    "semantic-release-cli": "^5.4.0",
     "semver": "^7.3.2",
     "ttypescript": "^1.5.11",
     "typescript": "^4.0.2"
