@@ -37,13 +37,15 @@ jobs:
       id: yarn-build
       run: yarn build
 
-    - run: |
+    - name: publish canary version
+      id: publish
+      run: |
         PKG_NAME=$(node -p "require('./package.json').name")
         echo "PKG_NAME: ${PKG_NAME}"
         CANARY_VERSION=$(yarn info $PKG_NAME dist-tags.canary | sed -n 2p | sed s/undefined//)
         LATEST_VERSION=$(yarn info $PKG_NAME dist-tags.latest | sed -n 2p | sed s/undefined//)
         echo "CANARY_VERSION: ${CANARY_VERSION}, LATEST_VERSION: ${LATEST_VERSION}"
-        npm i semver
+        npm i semver --no-save --no-package-lock --ignore-scripts --no-audit
         VERSION=$(node_modules/.bin/semver -i prerelease --preid canary $(node -e "console.log(require('semver').gt('$CANARY_VERSION' || '0.0.0', '$LATEST_VERSION' || '0.0.0') ? '$CANARY_VERSION' : '$LATEST_VERSION')"))
         echo "VERSION: ${VERSION}"
         yarn publish --new-version $VERSION -tag canary --no-git-tag-version --no-commit-hooks
