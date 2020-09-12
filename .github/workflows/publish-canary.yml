@@ -39,9 +39,13 @@ jobs:
 
     - run: yarn global add semver
     - run: |
+        PKG_NAME=$(node -p "require('./package.json').version")
+        echo "PKG_NAME: ${PKG_NAME}"
         CANARY_VERSION=$(yarn info $PKG_NAME dist-tags.canary | sed -n 2p)
         LATEST_VERSION=$(yarn info $PKG_NAME dist-tags.latest | sed -n 2p)
+        echo "CANARY_VERSION: ${CANARY_VERSION}, LATEST_VERSION: ${LATEST_VERSION}"
         VERSION=$(semver -i prerelease --preid canary $(node -e "console.log(require('semver').gt('$CANARY_VERSION', '$LATEST_VERSION') ? '$CANARY_VERSION' : '$LATEST_VERSION')"))
+        echo "VERSION: ${VERSION}"
         yarn publish --new-version $VERSION -tag canary --no-git-tag-version --no-commit-hooks
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
