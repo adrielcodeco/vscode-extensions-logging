@@ -36,7 +36,9 @@ jobs:
       id: yarn-build
       run: yarn build
 
-    - run: yarn semantic-release
+    - name: semantic-release
+      id: semantic-release
+      run: node_modules/.bin/semantic-release
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
