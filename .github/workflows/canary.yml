@@ -1,11 +1,11 @@
-name: publish-canary
+name: canary
 on:
   push:
     branches:
       - master
 
 jobs:
-  publish-canary:
+  canary:
     name: publish
     runs-on: ubuntu-latest
     steps:
@@ -44,7 +44,7 @@ jobs:
         CANARY_VERSION=$(yarn info $PKG_NAME dist-tags.canary | sed -n 2p)
         LATEST_VERSION=$(yarn info $PKG_NAME dist-tags.latest | sed -n 2p)
         echo "CANARY_VERSION: ${CANARY_VERSION}, LATEST_VERSION: ${LATEST_VERSION}"
-        VERSION=$(semver -i prerelease --preid canary $(node -e "console.log(require('semver').gt('$CANARY_VERSION', '$LATEST_VERSION') ? '$CANARY_VERSION' : '$LATEST_VERSION')"))
+        VERSION=$(semver -i prerelease --preid canary $(node -e "console.log(require('semver').gt('$CANARY_VERSION' || '0.0.0', '$LATEST_VERSION' || '0.0.0') ? '$CANARY_VERSION' : '$LATEST_VERSION')"))
         echo "VERSION: ${VERSION}"
         yarn publish --new-version $VERSION -tag canary --no-git-tag-version --no-commit-hooks
       env:
