@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/adrielcodeco/vscode-extensions-logging/compare/v1.0.0...v1.0.1) (2020-09-12)
+
+
+### Bug Fixes
+
+* **ci:** actions version ([7a6831e](https://github.com/adrielcodeco/vscode-extensions-logging/commit/7a6831ed06d6e57748b2c3c2e85d47235e62ce0c))
+
 # 1.0.0 (2020-09-12)
 
 
