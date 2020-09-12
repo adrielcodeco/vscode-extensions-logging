@@ -1,0 +1,47 @@
+name: publish-canary
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish-canary:
+    name: publish-canary
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@master
+
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 14.x
+        check-latest: trues
+
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Install dependencies
+      run: yarn install --ignore-scripts --frozen-lockfile --ignore-engines
+
+    - name: Build typescript code
+      id: yarn-build
+      run: yarn build
+
+    - run: yarn global add semver
+    - run: |
+        CANARY_VERSION=$(yarn info $PKG_NAME dist-tags.canary | sed -n 2p)
+        LATEST_VERSION=$(yarn info $PKG_NAME dist-tags.latest | sed -n 2p)
+        VERSION=$(semver -i prerelease --preid canary $(node -e "console.log(require('semver').gt('$CANARY_VERSION', '$LATEST_VERSION') ? '$CANARY_VERSION' : '$LATEST_VERSION')"))
+        yarn publish --new-version $VERSION -tag canary --no-git-tag-version --no-commit-hooks
+      env:
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
