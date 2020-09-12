@@ -1,0 +1,7 @@
+# 1.0.0 (2020-09-12)
+
+
+### Bug Fixes
+
+* **ci:** env variable ([cec50b1](https://github.com/adrielcodeco/vscode-extensions-logging/commit/cec50b11a893e301d3dc320952be0be182026c31))
+* **ci:** github action ([a74b40e](https://github.com/adrielcodeco/vscode-extensions-logging/commit/a74b40e8aef5a6d79f6186873ceded03ec9af1f5))
