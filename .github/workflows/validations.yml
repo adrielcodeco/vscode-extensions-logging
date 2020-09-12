@@ -45,7 +45,7 @@ jobs:
       run: yarn check:spelling
 
     - name: Type Check
-      id: yarn typecheck
+      id: yarn-typecheck
       run: yarn typecheck
 
     - name: Tests
