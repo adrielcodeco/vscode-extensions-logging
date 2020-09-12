@@ -44,4 +44,4 @@ jobs:
         VERSION=$(semver -i prerelease --preid canary $(node -e "console.log(require('semver').gt('$CANARY_VERSION', '$LATEST_VERSION') ? '$CANARY_VERSION' : '$LATEST_VERSION')"))
         yarn publish --new-version $VERSION -tag canary --no-git-tag-version --no-commit-hooks
       env:
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
