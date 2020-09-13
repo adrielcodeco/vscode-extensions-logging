@@ -1,0 +1,13 @@
+.github
+.commitlintrc.js
+.cspell.json
+.eslintignore
+.eslintrc.js
+.gitignore
+.markdownlintignore
+.mergify.yml
+.npmrc
+.prettierrc
+.releaserc.json
+tsconfig.build.json
+tsconfig.eslint.json
