@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/adrielcodeco/vscode-extensions-logging/compare/v1.0.2...v1.0.3) (2020-09-13)
+
+
+### Bug Fixes
+
+* npmignore ([78ab0dc](https://github.com/adrielcodeco/vscode-extensions-logging/commit/78ab0dc75edc3045034d4d9e8d07a4070d5fc1f3))
+* removing postinstall script ([ea7a5f7](https://github.com/adrielcodeco/vscode-extensions-logging/commit/ea7a5f728f25f19ac1afa01ab9d542366d30a5db))
+
 ## [1.0.2](https://github.com/adrielcodeco/vscode-extensions-logging/compare/v1.0.1...v1.0.2) (2020-09-13)
 
 
