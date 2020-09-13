@@ -38,9 +38,9 @@ export class ExtensionsLogging {
     })
   }
 
-  static register (extensionName: string) {
+  static register (extensionName: string, loglevel = 'info') {
     const outputChannel = window.createOutputChannel(extensionName)
-    return new ExtensionsLogging(outputChannel)
+    return new ExtensionsLogging(outputChannel, loglevel)
   }
 
   public log (log: any, context?: any): void {
@@ -89,7 +89,7 @@ class VSCodeExtensionTransport extends Transport {
     setImmediate(() => {
       this.emit('logged', info)
     })
-    this.outputChannel.append(info.message)
+    this.outputChannel.appendLine(info.message)
     if (next) {
       next()
     }
