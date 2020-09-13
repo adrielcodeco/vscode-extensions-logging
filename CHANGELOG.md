@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/adrielcodeco/vscode-extensions-logging/compare/v1.0.3...v1.0.4) (2020-09-13)
+
+
+### Bug Fixes
+
+* append line in output channel ([ff40b03](https://github.com/adrielcodeco/vscode-extensions-logging/commit/ff40b03590206a82d1d9d46d97f3d041a1fe414a))
+
 ## [1.0.3](https://github.com/adrielcodeco/vscode-extensions-logging/compare/v1.0.2...v1.0.3) (2020-09-13)
 
 
