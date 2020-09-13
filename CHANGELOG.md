@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/adrielcodeco/vscode-extensions-logging/compare/v1.0.1...v1.0.2) (2020-09-13)
+
+
+### Bug Fixes
+
+* **release:** ignore dev files on release package ([1d18330](https://github.com/adrielcodeco/vscode-extensions-logging/commit/1d18330db0388577fb5a0d34d4ec900300efd82b))
+
 ## [1.0.1](https://github.com/adrielcodeco/vscode-extensions-logging/compare/v1.0.0...v1.0.1) (2020-09-12)
 
 
